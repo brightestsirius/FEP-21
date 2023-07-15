@@ -4,6 +4,7 @@
 // increment/decrement
 
 // Math operations
+
 // Number/+
 // parseInt/parseFloat
 // NaN
@@ -40,4 +41,4 @@
 
 // isNaN()
 
-// &&, ||
+// Logical operators: &&, ||

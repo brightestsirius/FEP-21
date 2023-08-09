@@ -9,16 +9,17 @@
 // var/let/const
 
 // function as argument
+
 // callback
 
 // arrow functions
+
+// recursion
 
 // setTimeout
 // setInterval/clearInterval
 
 // Event loop
-
-// recursion
 
 // Array methods:
 //     forEach()

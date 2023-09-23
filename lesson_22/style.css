@@ -1,0 +1,44 @@
+body{
+    height: 100vh;
+    width: 100vh;
+}
+
+.block{
+    width: 100px;
+    height: 100px;
+    background: crimson;
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.circle{
+    width: 70px;
+    height: 70px;
+    background: yellow;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h1{
+    font-size: 17px;
+}
+
+.table__animals{
+    border-collapse: collapse;
+}
+
+.table__animals td{
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.table__animals tr.active{
+    background: #4CAF50;
+    color: white;
+}

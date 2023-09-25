@@ -1,0 +1,34 @@
+body {
+    font-family: 'Inclusive Sans', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Noto Sans Linear B', sans-serif;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.todo {
+    background: #cfcece;
+    border-radius: 3px;
+    padding: 5px;
+    min-width: 100px;
+    cursor: pointer;
+}
+
+.todo.active {
+    background: crimson;
+    color: white;
+}
+
+.todo h3 {
+    margin: 0 0 5px 0;
+    font-size: 14px;
+    font-weight: 500;
+}

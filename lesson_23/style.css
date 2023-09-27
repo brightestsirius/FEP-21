@@ -1,0 +1,35 @@
+input::placeholder{
+    color: #c8c5c5;
+}
+
+input:focus::placeholder{
+    color: transparent;
+}
+
+.block{
+    width: 100px;
+    height: 100px;
+    background: black;
+    margin: 10px 0;
+}
+
+label{
+    border: 1px solid black;
+    padding: 3px;
+    display: block;
+    margin: 5px 0;
+    width: fit-content;
+}
+
+fieldset{
+    width: fit-content;
+}
+
+fieldset label{
+    margin: 10px 0;
+}
+
+.error{
+    border-color: red;
+    color: red;
+}

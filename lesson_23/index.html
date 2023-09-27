@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 23</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- <label for="countryInput">Type country:</label>
+    <input type="number" placeholder="Ukraine" id="countryInput">
+
+    <p id="countryValue"></p> -->
+
+    <!-- <input type="color" id="colorInput">
+    <div id="block" class="block"></div> -->
+
+    <!-- <label>
+        Size S: <input type="radio" value="S" name="size">
+    </label>
+
+    <label>
+        Size M: <input type="radio" value="M" name="size">
+    </label>
+
+    <label>
+        Size L: <input type="radio" value="L" name="size" checked>
+    </label> -->
+
+    <!-- <label>
+        Size S: <input type="checkbox" value="S" name="size" checked>
+    </label>
+
+    <label>
+        Size M: <input type="checkbox" value="M" name="size">
+    </label>
+
+    <label>
+        Size L: <input type="checkbox" value="L" name="size" checked>
+    </label> -->
+
+    <!-- <select id="selectSize">
+        <option value="S">Малий</option>
+        <option value="M">Середній</option>
+        <option value="L">Великий</option>
+    </select> -->
+
+    <!-- <select id="selectSize" multiple>
+        <option value="S">Малий</option>
+        <option value="M" selected>Середній</option>
+        <option value="L" selected>Великий</option>
+    </select> -->
+
+    <!-- <textarea id="textareaField">Hello</textarea> -->
+
+    <!-- <button id="btn" data-price="10$">Hello</button> -->
+
+    <!-- <a href="https://google.com" target="_blank">To Google</a>
+    <a href="https://hillel.com" target="_blank">To Hillel</a> -->
+
+    <form id="registrationForm">
+      <fieldset>
+        <legend>Registration form</legend>
+
+        <label>
+          Name:
+          <input type="text" data-name="name" value="Katya" required />
+        </label>
+
+        <label>
+            Email:
+            <input type="email" data-name="email" value="katya@gmail" required />
+          </label>
+
+        <label>
+          Year of birth:
+          <input type="number" data-name="yearOfBirth" value="1990" />
+        </label>
+
+        <label>
+          Gender:
+          <label>
+            Woman
+            <input type="radio" name="gender" value="woman" />
+          </label>
+
+          <label>
+            Man
+            <input type="radio" name="gender" value="man" />
+          </label>
+
+          <label>
+            Gender
+            <input type="radio" name="gender" value="gender" checked />
+          </label>
+        </label>
+
+        <label>
+          Animals:
+          <label>
+            Dog
+            <input type="checkbox" name="animal" value="dog" checked />
+          </label>
+
+          <label>
+            Cat
+            <input type="checkbox" name="animal" value="cat" />
+          </label>
+
+          <label>
+            Bird
+            <input type="checkbox" name="animal" value="bird" checked />
+          </label>
+        </label>
+
+        <label>
+          Country
+          <select data-name="country">
+            <option value="Ukraine">Ukraine</option>
+            <option value="Poland">Poland</option>
+            <option value="Germany">Germany</option>
+          </select>
+        </label>
+
+        <label>
+          Languages:
+          <select multiple data-name="languages">
+            <option value="ukrainian" selected>Ukrainian</option>
+            <option value="deutsch">Deutsch</option>
+            <option value="english" selected>English</option>
+          </select>
+        </label>
+
+        <button type="button" data-name="btnCancel">Cancel</button>
+        <input type="reset" value="Reset!">
+        
+        <button>Register</button>
+      </fieldset>
+    </form>
+
+    <script src="script.js"></script>
+  </body>
+</html>

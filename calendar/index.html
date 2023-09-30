@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <form id="formRoom" class="meeting__form">
+        <label>
+            Meeting title: <input type="text" data-name="title" value="Daily meeting" required>
+        </label>
+        <label>
+            Meeting room: <select data-name="room">
+                <!-- <option value="Green">Green</option>
+                <option value="Red">Red</option> -->
+            </select>
+        </label>
+        <label>
+            Meeting day: <select data-name="day">
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+            </select>
+        </label>
+        <label>
+            Meeting hour: <select data-name="hour">
+                <option value="10">10:00</option>
+                <option value="11">11:00</option>
+            </select>
+        </label>
+        <button>Create meeting</button>
+    </form>
+
+    <div id="containerRooms"></div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

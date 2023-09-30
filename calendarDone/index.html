@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <form id="meetingForm">
+        <fieldset class="meeting__form">
+            <legend>Create meeting</legend>
+            <label>
+                Meeting title: <input type="text" id="meetingFormTitle" value="Daily meeting">
+            </label>
+            <label>
+                Meeting room:
+                <select id="meetingFormRoom">
+                    <!-- <option value="Red">Red</option>
+                    <option value="Green">Green</option> -->
+                </select>
+            </label>
+            <label>
+                Meeting day:
+                <select id="meetingFormDay">
+                    <!-- <option value="Monday">Monday</option>
+                    <option value="Tuesday">Tuesday</option>
+                    <option value="Friday">Friday</option> -->
+                </select>
+            </label>
+            <label>
+                Meeting hour:
+                <select id="meetingFormHour">
+                    <!-- <option value="10">10:00</option>
+                    <option value="11">11:00</option>
+                    <option value="12">12:00</option> -->
+                </select>
+            </label>
+            <label>
+                Meeting participiants:
+                <select id="meetingFormParticipants" multiple>
+                    <!-- <option value="Jack">Jack</option>
+                    <option value="Anna">Anna</option>
+                    <option value="Ostap">Ostap</option>
+                    <option value="Taras">Taras</option> -->
+                </select>
+            </label>
+            <button>Create meeting</button>
+        </fieldset>
+    </form>
+
+    <div id="roomsTables" class="rooms__tables"></div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,57 +1,149 @@
 // call/apply/bind
 
-const usersTableTbody = document.querySelector(`#usersTable tbody`);
+// let Taras = {
+//     name: `Taras`,
+//     age: 80,
+//     getInfo(firstSymbol=`.`, secondSymbol=`.`){
+//         return `${this.name} is ${this.age} years old${firstSymbol}${secondSymbol}`;
+//     }
+// }
 
-class User{
-    constructor(obj){
-        Object.assign(this, obj);
-    }
+// console.log(Taras.getInfo(`!`));
 
-    renderTR(){
-        const tr = document.createElement(`tr`);
-        
-        const tdName = document.createElement(`td`);
-        tdName.innerHTML = this.name;
+// let Yevhen = {
+//     name: `Yevhen`,
+//     age: 70
+// }
 
-        const tdAge = document.createElement(`td`);
-        tdAge.innerHTML = this.age;
+// let Patron = {
+//     name: `Patron`,
+//     age: 5
+// }
 
-        const tdAction = document.createElement(`td`);
-        
-        const btnDelete = document.createElement(`button`);
-        btnDelete.innerHTML = `Delete`;
+// console.log( Taras.getInfo.call(Yevhen, `!`, `!`) );
 
-        btnDelete.addEventListener(`click`, () => {
-            console.log(`arrow fn`, this);
-        });
+// console.log( Taras.getInfo.call(Patron) );
+// console.log( Taras.getInfo.call(Patron, `?`,`!`) );
+// console.log( Taras.getInfo.call(Patron, undefined,`!`) );
 
-        let user = this;
-        btnDelete.addEventListener(`click`, function(){
-            console.log(`old fn`, this);
-        });
+// console.log( Taras.getInfo.apply(Yevhen) )
+// console.log( Taras.getInfo.apply(Yevhen, [`!`]) )
+// console.log( Taras.getInfo.apply(Yevhen, [`!`, `?`]) )
+// console.log( Taras.getInfo.apply(Yevhen, [undefined, `?`]) )
 
-        btnDelete.addEventListener(`click`, this.deleteAction.bind(this));
+// const getInfoForYevhen = Taras.getInfo.bind(Yevhen, `!`);
+// console.log( getInfoForYevhen(`??`, `..`) );
 
-        tdAction.append(btnDelete);
+// call/apply/bind example
 
-        tr.append(tdName, tdAge, tdAction);
-        usersTableTbody.append(tr);
-    }
+// const usersTableTbody = document.querySelector(`#usersTable tbody`);
 
-    deleteAction(){
-        console.log(`${this.name} is deleting`);
-    }
-}
+// class User{
+//     constructor(obj){
+//         Object.assign(this, obj);
+//     }
 
-const TarasSheva = new User({name: `Taras`, age: 80});
-TarasSheva.renderTR();
+//     render(){
+//         let tr = document.createElement(`tr`);
 
-console.log(TarasSheva);
+//         let tdName = document.createElement(`td`);
+//         tdName.innerHTML = this.firstName;
 
-// REST
+//         let tdAge = document.createElement(`td`);
+//         tdAge.innerHTML = this.age;
+
+//         let tdActions = document.createElement(`td`);
+
+//         let btnDelete = document.createElement(`button`);
+//         btnDelete.innerHTML = `Delete`;
+
+//         btnDelete.addEventListener(`click`, () => {
+//             console.log(`ARROW FUNC: ${this.firstName} is deleting.`)
+//         })
+
+//         // let user = this;
+//         btnDelete.addEventListener(`click`, function() {
+//             console.log(`OLD FUNC: ${this.firstName} is deleting.`, this)
+//         })
+
+//         btnDelete.addEventListener(`click`, this.userDeleting.bind(this))
+
+//         tdActions.append(btnDelete);
+
+//         tr.append(tdName, tdAge, tdActions);
+//         usersTableTbody.append(tr);
+//     }
+
+//     userDeleting(){
+//         console.log(`SEPARATE FUNC: ${this.firstName} is deleting.`);
+//     }
+// }
+
+// let Taras = new User({firstName: `Taras`, age:80});
+// console.log(Taras);
+// Taras.render();
+
+// REST. AJAX
 
 // fetch
 
+// GET
+
+// const posts = fetch(`https://jsonplaceholder.typicode.com/posts`);
+// console.log(posts);
+
 // Promise
+// 🟢🔴🥳⛔️
+
+let ticketsPurchased = true;
+
+let promiseConcert = new Promise(
+    function(resolve, reject){
+        setTimeout(() => {
+            ticketsPurchased ? resolve() : reject();
+        }, 1000)
+    }
+);
+
+promiseConcert
+    .then(
+        () => {
+            console.log(`🟢 in 1 resolve`);
+        }
+    )
+    .then(
+        () => {
+            console.log(`🟢 in 2 resolve`);
+            return Promise.reject();
+        }
+    )
+    .then(
+        () => {
+            console.log(`🟢 in 3 resolve`)
+        }
+    )
+    .catch(() => {
+        console.log(`⛔️ in catch`);
+    })
+
+// CALLBACK HELL
+// setTimeout(() => {
+//     console.log(`after 1s`);
+//     firstFunc();
+// }, 1000);
+
+// const firstFunc = () => {
+//     console.log(`in firstFunc`);
+//     secondFunc();
+// }
+
+// const secondFunc = () => {
+//     console.log(`in secondFunc`);
+//     thirdFunc();
+// }
+
+// const thirdFunc = () => {
+//     console.log(`in thirdFunc`);
+// }
 
 // async/await

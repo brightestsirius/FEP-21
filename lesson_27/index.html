@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 27</title>
+    <style>
+        .completed{
+            color: green;
+        }
+        .non-completed{
+            color: red;
+        }
+
+        .list__form{
+            border: 1px solid black;
+            display: flex;
+            flex-direction: column;
+            width: fit-content;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .list__form label{
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <form id="listForm" class="list__form">
+        <label>
+            Title <input type="text" data-name="title" value="New todo">
+        </label>
+        <label>
+            Completed <input type="checkbox" data-name="completed">
+        </label>
+        <label>
+            User <select data-name="user">
+                <!-- <option value="1">User #1</option>
+                <option value="2">User #2</option>
+                <option value="3">User #3</option> -->
+            </select>
+        </label>
+        <button>Add todo</button>
+    </form>
+
+    <div id="listContainer"></div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

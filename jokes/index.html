@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joke</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <form class="joke__form" id="jokeForm">
+        <label>
+            Random <input type="radio" name="jokeType" value="random" checked>
+        </label>
+        <label>
+            From categories <input type="radio" name="jokeType" value="categories">
+            <ul class="joke__categories" id="jokeCategories"></ul>
+        </label>
+        <label>
+            Search <input type="radio" name="jokeType" value="search">
+        </label>
+        <button>Get a joke</button>
+    </form>
+
+    <div id="jokesContainer"></div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

@@ -18,3 +18,41 @@
 .joke__categories.show{
     display: block;
 }
+
+.joke__block{
+    border: 1px solid black;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: fit-content;
+}
+
+.joke__block p{
+    margin: 3px 0;
+}
+
+.joke__search{
+    display: none;
+}
+
+.joke__search.show{
+    display: block;
+}
+
+.container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.container__joke{
+    width: 50%;
+    padding: 10px;
+    background: lightgrey;
+}
+
+.container__joke--fav{
+    background: #d9c4fd;
+}
+
+.container__joke--fav .joke__block{
+    background: white;
+}

@@ -18,11 +18,15 @@
         </label>
         <label>
             Search <input type="radio" name="jokeType" value="search">
+            <input type="text" id="jokeSearch" class="joke__search">
         </label>
         <button>Get a joke</button>
     </form>
 
-    <div id="jokesContainer"></div>
+    <div class="container">
+        <div class="container__joke" id="jokesContainer"></div>
+        <div class="container__joke container__joke--fav" id="jokesFavContainer"></div>
+    </div>
     
     <script src="script.js"></script>
 </body>

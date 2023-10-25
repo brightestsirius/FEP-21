@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WS Chat 🟢🔴</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -15,12 +16,14 @@
     <br><br>
 
     <form id="chatForm">
-        <input type="text" data-name="message">
-        <button id="chatFormBtn">Send message</button>
+        <label>
+            Message: <input type="text" data-name="message">
+        </label>
+        <button>Add message</button>
     </form>
 
     <ul id="chatMessages"></ul>
-    
+
     <script src="script.js"></script>
 </body>
 </html>

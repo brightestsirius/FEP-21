@@ -1,15 +1,25 @@
 const WebSocket = require(`ws`);
 const server = new WebSocket.Server({ port: 3000 });
 
-const listMessages = [];
+const messagesList = [
+  {
+    id: 0,
+    value: `Hello!`,
+  },
+];
 
 server.on(`connection`, (socket) => {
-  console.log(`🟢 Connection established`);
+  console.log(`🟢 Connection established on Server-side`);
+
+  socket.on(`close`, () => {
+    console.log(`🔴 Connection closed on Server-side`);
+    socket.close();
+  });
 
   socket.send(
     JSON.stringify({
       action: `get`,
-      payload: listMessages,
+      payload: messagesList,
     })
   );
 
@@ -18,46 +28,25 @@ server.on(`connection`, (socket) => {
 
     switch (msg.action) {
       case `add`:
-        let newMsgID = listMessages.length
-          ? listMessages[listMessages.length - 1].id + 1
+        let newMsgId = messagesList.length
+          ? messagesList[messagesList.length - 1].id + 1
           : 1;
-        let newMsg = {
-          id: newMsgID,
-          ...msg.payload,
-        };
+        msg.payload.id = newMsgId;
 
-        listMessages.push(newMsg);
-        server.clients.forEach((client) => {
-          client.send(
-            JSON.stringify({
-              action: `add`,
-              payload: newMsg,
-            })
-          );
-        });
-
+        messagesList.push(msg.payload);
         break;
       case `delete`:
-        let msgIndex = listMessages.findIndex(
+        let msgIndex = messagesList.findIndex(
           (item) => item.id === msg.payload.id
         );
-        listMessages.splice(msgIndex, 1);
-
-        server.clients.forEach((client) => {
-          client.send(
-            JSON.stringify({
-              action: `delete`,
-              payload: { id: msg.payload.id },
-            })
-          );
-        });
+        messagesList.splice(msgIndex, 1);
+        break;
     }
 
-    console.log(listMessages);
-  });
+    server.clients.forEach((client) => {
+      client.send(JSON.stringify(msg));
+    });
 
-  socket.on(`close`, () => {
-    socket.close();
-    console.log(`🔴 Connection closed on Client-side`);
+    console.log(messagesList);
   });
 });

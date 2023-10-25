@@ -3,20 +3,28 @@ let socket;
 const chatStatus = document.querySelector(`#chatStatus`);
 
 const chatForm = document.querySelector(`#chatForm`);
-
 const chatMessages = document.querySelector(`#chatMessages`);
 
 const chatClose = document.querySelector(`#chatClose`);
-
 const chatRestart = document.querySelector(`#chatRestart`);
 
-const createConnection = () => {
-  chatMessages.innerHTML = ``;
+const disableElements = () => {
+  let elements = document.querySelectorAll("*:not(#chatRestart)");
+  elements.forEach((item) => item.setAttribute(`disabled`, true));
+};
+
+const enableElements = () => {
+  let elements = document.querySelectorAll("*:not(#chatRestart)");
+  elements.forEach((item) => item.removeAttribute(`disabled`));
+};
+
+const clearMsgList = () => (chatMessages.innerHTML = ``);
+
+const startConnection = () => {
   socket = new WebSocket(`ws://localhost:3000`);
 
   socket.addEventListener(`open`, () => {
     chatStatus.innerHTML = `🟢 Online`;
-    enableElements();
   });
 
   socket.addEventListener(`close`, () => {
@@ -24,83 +32,78 @@ const createConnection = () => {
     disableElements();
   });
 
-  socket.addEventListener(`message`, ({ data: msg }) => {
-    msg = JSON.parse(msg);
+  socket.addEventListener(`message`, (msg) => {
+    msg = JSON.parse(msg.data);
+    console.log(msg);
 
     switch (msg.action) {
       case `get`:
-        renderList(msg.payload);
+        renderMsgList(msg.payload);
         break;
       case `add`:
-        createListItem(msg.payload);
+        renderMsg(msg.payload);
         break;
       case `delete`:
-        deleteListItem(msg.payload);
+        deleteMsg(msg.payload);
         break;
     }
   });
 };
 
-const createListItem = (item) => {
+const renderMsg = (msg) => {
   const li = document.createElement(`li`);
-  li.innerHTML = item.value;
-  li.dataset.id = item.id;
+  li.innerHTML = msg.value;
+  li.dataset.id = msg.id;
 
-  let deleteBtn = document.createElement(`button`);
-  deleteBtn.innerHTML = `Delete`;
-  deleteBtn.addEventListener(`click`, () => {
-    socket.send(
-      JSON.stringify({
-        action: `delete`,
-        payload: item,
-      })
-    );
-  });
+  if (msg.id) {
+    const deleteBtn = document.createElement(`button`);
+    deleteBtn.innerHTML = `Delete`;
+    deleteBtn.addEventListener(`click`, () => {
+      socket.send(
+        JSON.stringify({
+          action: `delete`,
+          payload: msg,
+        })
+      );
+    });
 
-  li.append(deleteBtn);
+    li.append(deleteBtn);
+  }
 
   chatMessages.append(li);
 };
 
-const deleteListItem = (item) => {
-  const li = chatMessages.querySelector(`li[data-id="${item.id}"]`);
-  li.remove();
+const deleteMsg = (msg) => {
+  let li = chatMessages.querySelector(`li[data-id="${msg.id}"]`);
+  li && li.remove();
 };
 
-const disableElements = () => {
-  let elements = document.querySelectorAll(`*:not(#chatRestart)`);
-  elements.forEach((element) => element.setAttribute(`disabled`, true));
-};
-
-const enableElements = () => {
-  let elements = document.querySelectorAll(`*`);
-  elements.forEach((element) => element.removeAttribute(`disabled`));
-};
-
-const renderList = (list) => list.forEach((item) => createListItem(item));
+const renderMsgList = (list) => list.forEach((msg) => renderMsg(msg));
 
 chatForm.addEventListener(`submit`, (e) => {
   e.preventDefault();
 
-  let inputMsg = e.target.querySelector(`input[data-name="message"]`);
-
-  let msg = {
-    value: inputMsg.value,
-  };
+  let msgValue = e.target.querySelector(`input[data-name="message"]`).value;
 
   socket.send(
     JSON.stringify({
       action: `add`,
-      payload: msg,
+      payload: {
+        value: msgValue,
+      },
     })
   );
-
-  chatForm.reset();
+  e.target.reset();
 });
 
 chatClose.addEventListener(`click`, () => {
   socket.close();
 });
 
-createConnection();
-chatRestart.addEventListener(`click`, createConnection);
+chatRestart.addEventListener(`click`, () => {
+  startConnection();
+  clearMsgList();
+  enableElements();
+});
+
+startConnection();
